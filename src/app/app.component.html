@@ -1,0 +1,42 @@
+<div class="container px-5 my-3">
+  <h1 class="text-center">Administración de artículos</h1>
+  <table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Borrar</th>
+        <th>Seleccionar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let articulo of articulos; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ articulo.descripcion }}</td>
+        <td>{{ articulo.precio }}</td>
+        <td><fa-icon [icon]="faTrashAlt" (click)="eliminarArticulo(i)"></fa-icon></td>
+        <td><fa-icon [icon]="faPencilAlt" (click)="editarArticulo(i)"></fa-icon></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div >
+    <div class="row">
+      <div class="col">
+        <input class="form-control" type="number" name="" id="" [(ngModel)]="codigo" placeholder="Código" />
+      </div>
+      <div class="col">
+        <input class="form-control" type="text" name="" id="" [(ngModel)]='descripcion' placeholder="Descripción" />
+      </div>
+      <div class="col input-group">
+        <span class="input-group-text">$</span>
+        <input class="form-control" type="number" name="" id="" [(ngModel)]='precio' placeholder="Precio" />
+      </div>
+    </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end my-3">
+      <button class="btn btn-dark me-md-2" (click)="modificarArticulo()" type="button">Modificar</button>
+      <button class="btn btn-dark" (click)="agregarArticulo()" type="button">Agregar</button>
+    </div>
+  </div>
+</div>
